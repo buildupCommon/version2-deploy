@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    cloudzcp.io/realm: tworld
+    cloudzcp.io/project: tworld-biz
+    cloudzcp.io/zcpapplication: testmaven
+  name: testmaven
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      cloudzcp.io/realm: tworld
+      cloudzcp.io/project: tworld-biz
+      cloudzcp.io/zcpapplication: testmaven
+  template:
+    metadata:
+      labels:
+        cloudzcp.io/realm: tworld
+        cloudzcp.io/project: tworld-biz
+        cloudzcp.io/zcpapplication: testmaven
+      name: testmaven
+    spec:
+      containers:
+      - image: "tworld-registry.skt.cloudzcp.com/kb-test/react:latest-20"
+        imagePullPolicy: Always
+        name: testmaven
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          limits: {}
+          requests: {}
+      imagePullSecrets:
+      - name: kb-harbor-robot
