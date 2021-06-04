@@ -22,7 +22,7 @@ spec:
       name: testmaven
     spec:
       containers:
-      - image: "tworld-registry.skt.cloudzcp.com/kb-test/react:latest-15"
+      - image: "tworld-registry.skt.cloudzcp.com/kb-test/react:latest-20"
         imagePullPolicy: Always
         name: testmaven
         ports:
